@@ -10,7 +10,7 @@ import BTNFavorites from "@/components/UI/BTNFavorites";
 
 
 const PageFilm = async ({ params }: { params: { id: string } }) => {
-  const { id } =  params;
+  const  id  =  Number(params.id);
   const data = await getFilmById(id, "movie");
   const trailer = await getTrailer(id, "movie");
   const actors = await getActors("movie", id);
