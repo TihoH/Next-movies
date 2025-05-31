@@ -29,6 +29,7 @@ export interface ListFilmProps {
     type: string,
     movieListType: string
     trailer: any
+    data: any
 }
 
 export interface PageFilmDescriptionProps {
@@ -44,5 +45,7 @@ export interface PageFilmDescriptionProps {
         release_date: number
         runtime: number
     }
+      trailer: any,
+  actors: any,
 }
 // END Props

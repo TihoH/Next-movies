@@ -26,7 +26,7 @@ const SearchData: FC<SearchDataProps> = ({
 
   return (
     <div
-    onClick={ () => changeRefTest() }
+    // onClick={ () => changeRefTest() }
     ref={refTest}
       className={`scrollbar rounded-md border-b-8 border-transparent absolute left-0 right-0 duration-500 top-[65px] min-h-[250px] max-h-[580px] overflow-y-scroll bg-[#100E19] p-1 `}
     >

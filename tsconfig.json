@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
 
-    "strict": false,
+    "strict": true,
     "noImplicitAny": false,//первые два для откллючения сторого режива в тайпрскрипт
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],

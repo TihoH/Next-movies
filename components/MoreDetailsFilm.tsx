@@ -4,7 +4,12 @@ import YouTube from "react-youtube";
 import BTNFavorites from "./UI/BTNFavorites";
 import { Loader } from "lucide-react";
 
-const MoreDetailsFilm: FC = ({ dataDetailsFilm, dataVideoDetailsFilm }) => {
+interface MoreDetailsFilmProps {
+  dataDetailsFilm: any
+  dataVideoDetailsFilm: any
+}
+
+const MoreDetailsFilm:FC<MoreDetailsFilmProps> = ({ dataDetailsFilm, dataVideoDetailsFilm }) => {
   if (!dataDetailsFilm && dataVideoDetailsFilm) {
     return <Loader />;
   }
