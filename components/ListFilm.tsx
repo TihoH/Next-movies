@@ -16,7 +16,7 @@ const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
   const [dataVideoDetailsFilm, setDataVideoDetailsFim] = useState([]);
 
   const showPopupDetailsFilm = (item: { id: string }) => {
-    setIdMoreDetailsFilm( toString(item.id) );
+    setIdMoreDetailsFilm( item.id );
     setIsActivePopupMoreDetailsFilm(true);
   };
 

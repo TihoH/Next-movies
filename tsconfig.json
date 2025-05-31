@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
+
+    "strict": false,
+    "noImplicitAny": false,//первые два для откллючения сторого режива в тайпрскрипт
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": true,    
     "skipLibCheck": true,
-    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
