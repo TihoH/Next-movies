@@ -7,9 +7,13 @@ import { getActors } from "@/API/getActors";
 import Image from "next/image";
 import BTNFavorites from "@/components/UI/BTNFavorites";
 
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
 
-
-const PageFilm = async ({ params }: { params: { id: string } }) => {
+const PageFilm = async ({ params }: PageProps) => {
   const id =  Number(params.id)
   const data = await getFilmById(id, "movie");
   const trailer = await getTrailer(id, "movie");
