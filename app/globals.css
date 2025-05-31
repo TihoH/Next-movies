@@ -19,3 +19,25 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* Кастомный скроллбар */
+.scrollbar {
+  scrollbar-width: thin; /* для Firefox */
+  scrollbar-color: #3b82f6 #100E19;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3b82f6; /* blue-500 */
+  border-radius: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #100E19; /* gray-200 */
+}
