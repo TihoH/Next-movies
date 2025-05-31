@@ -11,12 +11,12 @@ import { getTrailer } from "@/API/getTrailer";
 const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
 
   const [isActivePopupMoreDetailsFilm, setIsActivePopupMoreDetailsFilm] = useState(false);
-  const [idMoreDetailsFilm, setIdMoreDetailsFilm] = useState<number>();
+  const [idMoreDetailsFilm, setIdMoreDetailsFilm] = useState<string>();
   const [dataDetailsFilm, setDataDetailsFilm] = useState({});
   const [dataVideoDetailsFilm, setDataVideoDetailsFim] = useState([]);
 
-  const showPopupDetailsFilm = (item: { id: number }) => {
-    setIdMoreDetailsFilm(item.id);
+  const showPopupDetailsFilm = (item: { id: string }) => {
+    setIdMoreDetailsFilm( toString(item.id) );
     setIsActivePopupMoreDetailsFilm(true);
   };
 
