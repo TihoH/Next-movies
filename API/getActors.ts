@@ -1,6 +1,6 @@
 import {instanseFetch} from './instanseFetch'
 
-export  function getActors(type , id){
+export  function getActors(type:string , id: number){
     try {
         return  instanseFetch(`https://api.themoviedb.org/3/${type}/${id}/credits?language=ru`)
     } catch (error) {
