@@ -7,19 +7,19 @@ import { getActors } from "@/API/getActors";
 import Image from "next/image";
 import BTNFavorites from "@/components/UI/BTNFavorites";
 
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
+// type PageProps = {
+//   params: {
+//     id: string;
+//   };
+// };
 
-const PageFilm = async ({ params }: PageProps) => {
-  const id =  Number(params.id)
+const PageFilm = async ({ params }: { params: { id: string } }) => {
+  const id = Number(params.id);
   const data = await getFilmById(id, "movie");
   const trailer = await getTrailer(id, "movie");
   const actors = await getActors("movie", id);
 
-  console.log(typeof(id))
+  console.log(typeof id);
 
   return (
     <Container>
@@ -32,7 +32,11 @@ const PageFilm = async ({ params }: PageProps) => {
             width={400}
             height={300}
           />
-          <BTNFavorites text={"Добавить в избранное"} className="mt-3 " isHover={false} />
+          <BTNFavorites
+            text={"Добавить в избранное"}
+            className="mt-3 "
+            isHover={false}
+          />
         </div>
         <div className="w-[70%] pl-10">
           <PageFilmDescription
