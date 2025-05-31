@@ -28,6 +28,7 @@ export interface GroupListFilmsProps {
 export interface ListFilmProps {
     type: string,
     movieListType: string
+    trailer: any
 }
 
 export interface PageFilmDescriptionProps {

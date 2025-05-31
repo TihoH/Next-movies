@@ -5,6 +5,7 @@ import React from "react";
 
 const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
   data,
+  trailer,
   actors,
 }) => {
   return (
