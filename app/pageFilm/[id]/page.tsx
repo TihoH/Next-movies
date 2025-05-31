@@ -14,7 +14,7 @@ type PageProps = {
 };
 
 export default async function PageFilm({ params }: PageProps) {
-  const { id } = await params;;
+  const { id } = await params;
   const data = await getFilmById(id, "movie");
   const trailer = await getTrailer(id, "movie");
   const actors = await getActors("movie", id);

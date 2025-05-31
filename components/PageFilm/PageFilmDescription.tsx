@@ -1,11 +1,10 @@
 "use client";
 
 import { PageFilmDescriptionProps } from "@/types/types";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
   data,
-  trailer,
   actors,
 }) => {
   return (
