@@ -7,7 +7,7 @@ const options = {
     }
   };
 
-  export async function instanseFetch(link){
+  export async function instanseFetch(link:string){
     const response = await fetch(`${link} ` , options)
     const data = await response.json()
     return data
