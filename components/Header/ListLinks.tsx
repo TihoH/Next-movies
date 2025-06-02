@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { headerLinks } from "../types";
+import { headerLinks } from "@/types/types";
 import {useGetFetchData} from '../../hooks/useGetFetchData'
 import { getGanre } from "@/API/getGanre";
 
