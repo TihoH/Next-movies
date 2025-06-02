@@ -12,6 +12,8 @@ const Header: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const { ListSearchData, isLoading, totalResults } = useDebonceSearch( searchValue , activeSearch );
 
+  console.log('ffqf' , totalResults)
+
   return (
     <div className="flex gap-2 justify-between items-center py-2 text-xl text-gray-500 relative z-50 px-2">
       <div className="flex gap-10 items-center">
@@ -35,7 +37,7 @@ const Header: React.FC = () => {
         <SearchData
           searchValue={searchValue}
           isLoading={isLoading}
-          resultsSearchData={totalResults}
+          totalResults={totalResults}
           ListSearchData={ListSearchData}
           setActiveSearch={setActiveSearch}
         />

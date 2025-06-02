@@ -5,7 +5,7 @@ import Loader from "../UI/Loader";
 interface SearchDataProps {
   searchValue: string;
   isLoading: Boolean;
-  resultsSearchData: any;
+  totalResults: number;
   ListSearchData: any;
   setActiveSearch: any;
 }
@@ -13,7 +13,7 @@ interface SearchDataProps {
 const SearchData: FC<SearchDataProps> = ({
   searchValue,
   isLoading,
-  resultsSearchData,
+  totalResults,
   ListSearchData,
   setActiveSearch,
 }) => {
@@ -43,11 +43,11 @@ const SearchData: FC<SearchDataProps> = ({
               <span>Всего найдено: </span>
               <span
                 className={` ${
-                  resultsSearchData?.total_results === 0 && "text-red-700"
+                  totalResults === 0 && "text-red-700"
                 } text-2xl text-white font-serif `}
               >
                 {" "}
-                {resultsSearchData?.total_results}
+                {totalResults}
               </span>
             </div>
           )}
