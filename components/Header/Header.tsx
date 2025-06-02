@@ -8,13 +8,9 @@ import { useDebonceSearch } from "@/hooks/useDebonceSearch";
 import SearchData from "../Search/SearchData";
 
 const Header: React.FC = () => {
-  const [activeSearch, setActiveSearch] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const { ListSearchData, isLoading, resultsSearchData } = useDebonceSearch(
-    searchValue,
-    activeSearch ,
-
-  );
+  const [activeSearch, setActiveSearch] = useState<Boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const { ListSearchData, isLoading, totalResults } = useDebonceSearch( searchValue , activeSearch );
 
   return (
     <div className="flex gap-2 justify-between items-center py-2 text-xl text-gray-500 relative z-50 px-2">
@@ -39,7 +35,7 @@ const Header: React.FC = () => {
         <SearchData
           searchValue={searchValue}
           isLoading={isLoading}
-          resultsSearchData={resultsSearchData}
+          resultsSearchData={totalResults}
           ListSearchData={ListSearchData}
           setActiveSearch={setActiveSearch}
         />

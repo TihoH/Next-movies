@@ -3,8 +3,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { useGetGanre } from "@/hooks/useGetGanre";
 import { sortGenres } from "@/utils/sortGanre";
+import { useGetGanre } from "@/hooks/useGetGanre";
 
 const BannerSlide = ({ data }) => {
   const ganre = useGetGanre("movie");

@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import LoaderMini from "../UI/LoaderMini";
 
 interface SearchProps {
-  activeSearch: boolean;
+  activeSearch: Boolean;
   setActiveSearch: (arg0: boolean) => void;
   searchValue: string;
   setSearchValue: (value: string) => void;
-  isLoading: boolean;
+  isLoading: Boolean;
 }
 
 const Search: React.FC<SearchProps> = ({

@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
 import { getSearchData } from "@/API/getSearchData";
+import { IlistItem } from "@/types/types";
 
-export function useDebonceSearch(searchValue, activeSearch) {
-  const [ListSearchData, setListSearchData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [resultsSearchData, setResultsSearchData] = useState(null);
+export function useDebonceSearch(searchValue:string , activeSearch:Boolean) {
+  const [ListSearchData, setListSearchData] = useState<IlistItem[]>([]);
+  const [isLoading, setIsLoading] = useState<Boolean>(false);
+  const [totalResults , setTotlaResults] = useState<number>(0);
 
-  async function getDataBySearch(searchValue) {
+  async function getDataBySearch(searchValue:string) {
     try {
       const dataSearch = await getSearchData(searchValue);
       setListSearchData(dataSearch.results);
-      setResultsSearchData(dataSearch);
+      setTotlaResults(dataSearch.total_results);
       setIsLoading(false);
+      console.log(dataSearch)
     } catch (error) {
       console.log("Ошибка поиска", error);
     }
   }
 
   useEffect(() => {
-    // if(activeSearch && searchValue){
-    //   setIsLoading(true)
-    // }else if(searchValue === ''){
-    //    setIsLoading(false)
-    // }
     activeSearch && searchValue && setIsLoading(true);
     const clearDebounce = setTimeout(() => {
       searchValue && getDataBySearch(searchValue);
@@ -33,5 +30,5 @@ export function useDebonceSearch(searchValue, activeSearch) {
     };
   }, [searchValue]);
 
-  return { ListSearchData, isLoading, resultsSearchData };
+  return { ListSearchData, isLoading, totalResults };
 }

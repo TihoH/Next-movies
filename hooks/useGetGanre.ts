@@ -1,10 +1,11 @@
 import { getGanre } from "@/API/getGanre";
+import { IAllGenres } from "@/types/types";
 import { useEffect, useState } from "react";
 
-export function useGetGanre(type) {
-  const [dataGanre, setDataGanre] = useState(null);
+export function useGetGanre(type:string) {
+  const [dataGanre, setDataGanre] = useState<IAllGenres[]>([]);
 
-  async function getGanreApi(type) {
+  async function getGanreApi(type:string) {
     try {
       const ganre = await getGanre(type);
       setDataGanre(ganre.genres);

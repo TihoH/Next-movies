@@ -1,5 +1,5 @@
 import BTNFavorites from "@/components/UI/BTNFavorites";
-import { allGenres, IlistItem } from "@/types/types";
+import { IAllGenres, IlistItem } from "@/types/types";
 import { sortGenres } from "@/utils/sortGanre";
 import { Info } from "lucide-react";
 import React, { FC } from "react";
@@ -7,7 +7,7 @@ import React, { FC } from "react";
 interface ListFilmHoverDescriptionProps {
   listItem: IlistItem
   showPopupDetailsFilm: (listItem: IlistItem) => void;
-  ganre: allGenres[];
+  ganre: IAllGenres[];
   isHover?: boolean;
 }
 

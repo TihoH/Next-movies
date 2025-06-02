@@ -2,24 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 import ListFilmHoverDescription from "../Slider/ListFilms/ListFilmHoverDescription";
+import { IAllGenres, IlistItem } from "@/types/types";
 import { useGetGanre } from "@/hooks/useGetGanre";
 
 interface SearchListProps {
-  ListSearchData: any;
+  ListSearchData: IlistItem[];
   setActiveSearch: (arg0: boolean) => void
 }
-
-
-
 
 
 const SearchList: FC<SearchListProps> = ({ ListSearchData , setActiveSearch}) => {
       const ganre = useGetGanre("movie");
 
-      
+  const showPopupDetailsFilm = () => {
+
+  }
+
   return (
     <ul className=" relative grid grid-cols-6 gap-5 p-2 pb-[30px]">
-      {ListSearchData?.map((item,index) => (
+      {ListSearchData?.map((item , index) => (
         <li key={index} className="overflow-hidden  transition-all cursor-pointer text-gray-300 rounded-md hover:border-white">
           {" "}
           <Link className="group " href={`/pageFilm/${item.id}`} onClick={ () => setActiveSearch(false) }>
@@ -35,7 +36,7 @@ const SearchList: FC<SearchListProps> = ({ ListSearchData , setActiveSearch}) =>
                 listItem={item}
                 ganre={ganre}
                 isHover={false}
-              />
+                showPopupDetailsFilm={showPopupDetailsFilm}             />
             </div>
             <h5 className="mt-1 text-sm group-hover:text-green-700">
               {item.title}

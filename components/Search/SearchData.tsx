@@ -4,7 +4,7 @@ import Loader from "../UI/Loader";
 
 interface SearchDataProps {
   searchValue: string;
-  isLoading: boolean;
+  isLoading: Boolean;
   resultsSearchData: any;
   ListSearchData: any;
   setActiveSearch: any;
