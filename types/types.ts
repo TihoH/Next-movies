@@ -1,21 +1,22 @@
-export type hoverMenu = {
-    name: string
+export type dropMenu = {
+    id: number ,
+    hoverMenu: GanresType[]
 }
-// export type filmData = {
-//     title: string ,
-//     tagline: string ,
-//     original_title: string ,
-//     overview: string ,
-//     release_date: number
-//     runtime: number
-// }
 
 
+
+export interface hoverMenu  {
+    name: string
+
+}
+export interface GanresType {
+    name: string
+    id: number
+}
 export interface headerLinks {
     name: string,
     id: number,
     activeDropMenu: boolean
-    hoverMenu?: hoverMenu[]
 }
 
 

@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { headerLinks } from "@/types/types";
-import {useGetFetchData} from '../../hooks/useGetFetchData'
+import { dropMenu, headerLinks } from "@/types/types";
+
 import { getGanre } from "@/API/getGanre";
+import { useGetFetchDataGanres } from "@/hooks/useGetFetchDataGanres";
 
 
 const ListLinks: React.FC = () => {
@@ -20,14 +21,14 @@ const ListLinks: React.FC = () => {
     },
     { name: "Мультфильмы", id: 3, activeDropMenu: true },
   ];
-  const dropMenu = [
+  const dropMenu:dropMenu[] = [
     {
       id: 1,
-      hoverMenu: useGetFetchData('movie' , getGanre).genres
+      hoverMenu: useGetFetchDataGanres('movie' , getGanre)
     },
     {
       id: 2,
-      hoverMenu: useGetFetchData('tv' , getGanre).genres
+      hoverMenu: useGetFetchDataGanres('tv' , getGanre)
     },
   ];
   const [activeIdHover, setActiveIdHover] = useState<number>(0);
@@ -54,7 +55,7 @@ const ListLinks: React.FC = () => {
               item.id === activeIdHover && (
                 <div key={item.id} className="flex flex-col  flex-wrap max-h-[320px] items-start max-w-[500px]">
                   {item.hoverMenu?.map((dropMenu , index) => (
-                    <Link className="hover:text-white   hover:translate-x-4 transition" href={"/"} key={index}> {dropMenu.name.replace(dropMenu.name[0], dropMenu.name[0].toUpperCase())} </Link>
+                    <Link className="hover:text-white   hover:translate-x-4 transition" href={"/"} key={index}> {dropMenu.name.charAt(0).toUpperCase() + dropMenu.name.slice(1)} </Link>
                   ))}
                 </div>
               )
