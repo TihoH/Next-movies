@@ -1,29 +1,26 @@
 import BTNFavorites from "@/components/UI/BTNFavorites";
-import { useGetGanre } from "@/hooks/useGetGanre";
+import { allGenres, IlistItem } from "@/types/types";
 import { sortGenres } from "@/utils/sortGanre";
-import { Info, MonitorPlay } from "lucide-react";
+import { Info } from "lucide-react";
 import React, { FC } from "react";
 
 interface ListFilmHoverDescriptionProps {
-  listItem: {
-    title: string;
-    release_date: number;
-  };
-  showPopupDetailsFilm?: () => void;
-  ganre: any ,
-  isHover?: boolean
+  listItem: IlistItem
+  showPopupDetailsFilm: (listItem: IlistItem) => void;
+  ganre: allGenres[];
+  isHover?: boolean;
 }
 
 const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
   listItem,
   showPopupDetailsFilm,
-  ganre ,
-  isHover
+  ganre,
+  isHover,
 }) => {
   // const ganre = useGetGanre("movie");
 
-  const activeShowPopupDetailsFilm = (item) => {
-    showPopupDetailsFilm(item);
+  const activeShowPopupDetailsFilm = (listItem: IlistItem) => {
+    showPopupDetailsFilm(listItem);
   };
 
   // console.log(listItem);

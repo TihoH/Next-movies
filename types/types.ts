@@ -3,8 +3,16 @@ export type dropMenu = {
     hoverMenu: GanresType[]
 }
 
+export interface allGenres {
+    id: number ,
+    name: string
+}
 
-
+export interface IlistItem {
+    title: string;
+    release_date: number;
+    genre_ids: number[]
+}
 export interface hoverMenu  {
     name: string
 

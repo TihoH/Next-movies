@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import { useGetGanre } from "@/hooks/useGetGanre";
-import {sortGenres} from '@/utils/sortGanre'
+import { sortGenres } from "@/utils/sortGanre";
 
 const BannerSlide = ({ data }) => {
   const ganre = useGetGanre("movie");
