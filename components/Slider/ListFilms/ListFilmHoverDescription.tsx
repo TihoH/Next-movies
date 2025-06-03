@@ -35,7 +35,7 @@ const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
         <p>
           {" "}
           <span className="text-gray-400">Год:</span>{" "}
-          {listItem.release_date.slice(0 , 4)}
+          {listItem.release_date?.toString().slice(0 , 4)}
         </p>
         <p>
           <span className="text-gray-400">Жанр: </span>
