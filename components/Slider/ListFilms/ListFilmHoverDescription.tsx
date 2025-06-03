@@ -5,10 +5,11 @@ import { Info } from "lucide-react";
 import React, { FC } from "react";
 
 interface ListFilmHoverDescriptionProps {
-  listItem: IlistItem
+  listItem: IlistItem;
   showPopupDetailsFilm: (listItem: IlistItem) => void;
   ganre: IAllGenres[];
   isHover?: boolean;
+  isActiveDescription: boolean;
 }
 
 const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
@@ -16,6 +17,7 @@ const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
   showPopupDetailsFilm,
   ganre,
   isHover,
+  isActiveDescription,
 }) => {
   // const ganre = useGetGanre("movie");
 
@@ -32,8 +34,8 @@ const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
         </p>
         <p>
           {" "}
-          <span className="text-gray-400">Дата релиза:</span>{" "}
-          {listItem.release_date}
+          <span className="text-gray-400">Год:</span>{" "}
+          {listItem.release_date.slice(0 , 4)}
         </p>
         <p>
           <span className="text-gray-400">Жанр: </span>
@@ -44,16 +46,18 @@ const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
         className="flex flex-col justify-end gap-2 "
         onClick={(e) => e.preventDefault()}
       >
-        <div className="flex justify-end mr-4 relative group/showDetails">
-          <Info
-            strokeWidth={1.5}
-            className="  text-yellow-500 hover:text-baseGreen "
-            onClick={() => activeShowPopupDetailsFilm(listItem)}
-          />
-          <span className="absolute px-5 py-2 opacity-0 right-8 -top-3 bg-gray-900/50  duration-300 group-hover/showDetails:opacity-100 text-white ">
-            Подробнее
-          </span>
-        </div>
+        {isActiveDescription && (
+          <div className="flex justify-end mr-4 relative group/showDetails">
+            <Info
+              strokeWidth={1.5}
+              className="  text-yellow-500 hover:text-baseGreen "
+              onClick={() => activeShowPopupDetailsFilm(listItem)}
+            />
+            <span className="absolute px-5 py-2 opacity-0 right-8 -top-3 bg-gray-900/50  duration-300 group-hover/showDetails:opacity-100 text-white ">
+              Подробнее
+            </span>
+          </div>
+        )}
         <div className="px-4">
           <BTNFavorites isHover={isHover} text="В избранное" />
         </div>

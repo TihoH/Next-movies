@@ -4,7 +4,7 @@ interface PopupProps {
   children: React.ReactNode;
   isActivePopup: boolean;
   setIsActivePopup: (arg0: boolean) => void;
-  setDataDetailsFilm: any;
+  setDataDetailsFilm?: any;
 }
 
 const Popup: FC<PopupProps> = ({

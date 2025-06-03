@@ -4,7 +4,7 @@ import { IlistItem } from "@/types/types";
 
 export function useDebonceSearch(searchValue:string , activeSearch:Boolean) {
   const [ListSearchData, setListSearchData] = useState<IlistItem[]>([]);
-  const [isLoading, setIsLoading] = useState<Boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [totalResults , setTotlaResults] = useState<number>(0);
 
   async function getDataBySearch(searchValue:string) {

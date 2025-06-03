@@ -1,6 +1,6 @@
 "use client";
 import { SearchIcon } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import LoaderMini from "../UI/LoaderMini";
 
 interface SearchProps {
@@ -9,6 +9,7 @@ interface SearchProps {
   searchValue: string;
   setSearchValue: (value: string) => void;
   isLoading: Boolean;
+  inpRef: any
 }
 
 const Search: React.FC<SearchProps> = ({
@@ -17,22 +18,24 @@ const Search: React.FC<SearchProps> = ({
   setSearchValue,
   searchValue,
   isLoading,
+  inpRef
 }) => {
 
 
 
   return (
     <div
-      className={`flex  items-center relative cursor-pointer duration-700 ${
+      className={`flex  z-50 items-center relative cursor-pointer duration-700 ${
         activeSearch ? "w-[300px]" : "w-[130px]"
       }`}
-      onClick={() => setActiveSearch(true)}
+      onClick={  () => setActiveSearch(true)}
       //   onMouseLeave={() => setActiveSearch(false)}
     >
       <input
         type="text"
         placeholder="Поиск"
         value={searchValue}
+        ref={inpRef}
         onChange={(event) =>  setSearchValue(event.target.value)}
         className=" outline-none group/styleSearch  px-3    w-full border border-green-900 h-[50px] rounded-xl bg-[#1F1B2E] hover:bg-gray-700 "
       />

@@ -35,7 +35,7 @@ const ListLinks: React.FC = () => {
 
   return (
     <div onMouseLeave={() => setActiveIdHover(0)}>
-      <ul className="flex relative gap-2 z-30">
+      <ul className="flex relative gap-2 z-50 ">
         {headerLinks.map((link) => (
           <li className={`hover:text-white transition ${link.id === activeIdHover ? 'text-white' : ''}`} key={link.id}>
             <Link onMouseMove={() => setActiveIdHover(link.id)} href={"/"}>
@@ -45,7 +45,7 @@ const ListLinks: React.FC = () => {
         ))}
       </ul>
       <ul
-        className={`absolute bg-[#1F1B2D] top-1 -left-1 -right-1 pt-10 z-10  rounded-lg transition ${
+        className={`absolute bg-[#1F1B2D] top-1 -left-1 -right-1 pt-10 z-30  border-b-2  rounded-lg transition ${
           activeIdHover != 0 ? "opacity-100" : "opacity-0"
         } `}
       >

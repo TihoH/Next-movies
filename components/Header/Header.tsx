@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Search from "./Search";
 import Login from "./Login";
 import ListLinks from "./ListLinks";
@@ -8,27 +8,29 @@ import { useDebonceSearch } from "@/hooks/useDebonceSearch";
 import SearchData from "../Search/SearchData";
 
 const Header: React.FC = () => {
-  const [activeSearch, setActiveSearch] = useState<Boolean>(false);
+  const [activeSearch, setActiveSearch] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
   const { ListSearchData, isLoading, totalResults } = useDebonceSearch( searchValue , activeSearch );
+  const refHeader = useRef<HTMLDivElement>(null)
+  const inpRef = useRef(null)
 
-  console.log('ffqf' , totalResults)
 
   return (
-    <div className="flex gap-2 justify-between items-center py-2 text-xl text-gray-500 relative z-50 px-2">
-      <div className="flex gap-10 items-center">
+    <div className="flex gap-2 justify-between items-center py-2 text-xl text-gray-500 relative z-30 px-2">
+      <div className="flex gap-10 items-center " ref={refHeader}>
         <Link href={"/"} className="text-3xl text-white z-50">
           Logo
         </Link>
         <ListLinks />
       </div>
-      <div className="flex gap-4 z-20">
+      <div className="flex gap-4 z-50">
         <Search
           activeSearch={activeSearch}
           setActiveSearch={setActiveSearch}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           isLoading={isLoading}
+          inpRef={inpRef}
         />
         <Login />
       </div>
@@ -40,6 +42,7 @@ const Header: React.FC = () => {
           totalResults={totalResults}
           ListSearchData={ListSearchData}
           setActiveSearch={setActiveSearch}
+          refHeader={inpRef}
         />
       )}
     </div>
