@@ -51,7 +51,7 @@ const handleClickOutside = (event: globalThis.MouseEvent) => {
   return (
     <div
       ref={refClose}
-      className={`scrollbar rounded-md border-b-8 border-gray-800 absolute z-10 left-0 right-0 duration-500 top-[65px] min-h-[250px] max-h-[650px] overflow-y-scroll bg-[#100E19] p-1 `}
+      className={`scrollbar border border-white border-t-transparent rounded-md border-b-8  absolute z-10 left-0 right-0 duration-500 top-[65px] min-h-[250px] max-h-[650px] overflow-y-scroll bg-[#100E19] p-1 `}
     >
       {searchValue ? (
         <div className="flex justify-between pr-5 sticky z-50 -top-1 py-3 bg-[#100E19]">

@@ -38,13 +38,14 @@ export interface headerLinks {
 // Start Props
 export interface GroupListFilmsProps {
     title: string,
-    type: string,
+    type: 'movie' | 'tv',
     movieListType: string
+    id?: string
 }
 export interface ListFilmProps {
-    type: string,
-    movieListType: string
-    trailer: any
+    // type: string,
+    // movieListType: string
+    // trailer: any
     data: any
 }
 
@@ -60,6 +61,7 @@ export interface PageFilmDescriptionProps {
         overview: string,
         release_date: number
         runtime: number
+        poster_path:string
     }
       trailer: any,
   actors: any,

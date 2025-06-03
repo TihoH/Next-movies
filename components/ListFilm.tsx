@@ -41,7 +41,7 @@ const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
   }, [idMoreDetailsFilm]);
 
   return (
-    <div className="relative">
+    <div className="relative w-full ">
       <SliderList
         dataSlider={data}
         showPopupDetailsFilm={showPopupDetailsFilm}

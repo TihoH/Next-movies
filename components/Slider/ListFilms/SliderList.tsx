@@ -10,6 +10,7 @@ import ListFilmHoverDescription from "./ListFilmHoverDescription";
 import Image from "next/image";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import { useGetGanre } from "@/hooks/useGetGanre";
+import { IlistItem } from "@/types/types";
 
 const SliderList: FC<any> = ({ dataSlider, showPopupDetailsFilm }) => {
   const swiperRef = useRef<any>(null);
@@ -36,15 +37,15 @@ const SliderList: FC<any> = ({ dataSlider, showPopupDetailsFilm }) => {
         spaceBetween={30}
         loop={true}
         modules={[Pagination]}
-        className="h-auto relative swiper-listFilm"
+        className=" w-full relative swiper-listFilm "
       >
-        {dataSlider?.map((listItem) => (
+        {dataSlider?.map((listItem: IlistItem) => (
           <SwiperSlide
             key={listItem.id}
             className="overflow-hidden transition-all cursor-pointer text-gray-300 rounded-md hover:border-white"
           >
             <Link className="group " href={`/pageFilm/${listItem.id}`}>
-              <div className="relative">
+              <div className="relative ">
                 <Image
                   alt="poster image"
                   className="duration-700 rounded-md border border-green-900 hover:opacity-50 group-hover:border-white"

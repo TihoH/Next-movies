@@ -1,13 +1,27 @@
 "use client";
 
 import { PageFilmDescriptionProps } from "@/types/types";
-import React from "react";
+import React, { useState } from "react";
+import YouTube from "react-youtube";
 
 const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
   data,
   trailer,
   actors,
 }) => {
+  const findTrailerKey = trailer?.results?.find(
+    (item: { type: string }) => item.type === "Trailer"
+  )?.key;
+
+  const [visibleCount , setVisibleCount]  = useState<boolean>(false)
+
+  const opts = {
+    width: "100%",
+    height: "350px",
+  };
+
+  console.log(actors)
+  
   return (
     <section className="">
       <h1 className="text-3xl text-gray-200 text-center">" {data.title} "</h1>
@@ -70,25 +84,22 @@ const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
         </div>
         <div className="flex flex-col ">
           <span className="text-gray-400">Актеры: </span>
-          <ul className="flex gap-2 scroll  overflow-x-auto text-center ">
-            {actors?.map((actor, index) => (
-              <li className="" key={index}>
-                {/* <img src="" alt="" /> */}
+          <ul className="flex flex-wrap">
+            {actors?.slice(0 ,  !visibleCount ? 5 : undefined ).map((actor, index , arr) => (
+              <li className=" px-2 py-1 " key={index}>
                 <span>{actor.name} </span>
-                {/* { index < actors.length -1 && ' ,' } */}
+                {index < arr.length - 1 ? ' , ' : ''}
               </li>
             ))}
+            {actors && !visibleCount && actors.length > 5 && <span className="flex items-end">...</span>}
+            <button type="button" className="text-gray-500 hover:text-gray-300" onClick={ () => setVisibleCount(!visibleCount) }>{ !visibleCount ? 'показать остальных' : 'скрыть' }</button>
           </ul>
         </div>
-        <div>
-          {/* <iframe
-            src={`https://www.youtube.com/embed/` + dataTrailer[1]?.key}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          /> */}
-        </div>
+        {findTrailerKey && (
+          <div>
+            <YouTube videoId={findTrailerKey} opts={opts} />
+          </div>
+        )}
       </div>
     </section>
   );
