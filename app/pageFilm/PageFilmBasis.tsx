@@ -16,6 +16,7 @@ const PageFilmBasis:FC<PageFilmDescriptionProps> = ({data , trailer ,actors}) =>
           alt="photo"
           width={400}
           height={300}
+          priority
         />
         <BTNFavorites
           text="Добавить в избранное"

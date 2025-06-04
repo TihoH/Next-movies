@@ -9,10 +9,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
         'baseGreen':'#15803D'
       },
+          boxShadow: {
+        'equal': '0 0 10px rgba(21, 128, 61, 1)',
+      }
     },
   },
   plugins: [],

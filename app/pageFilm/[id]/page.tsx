@@ -19,13 +19,14 @@ export default async function PageFilm({ params }: PageProps) {
   const data = await getFilmById(id, "movie");
   const trailer = await getTrailer(id, "movie");
   const actors = await getActors("movie", id);
+  const partId = await data?.belongs_to_collection?.id
 
   console.log(id)
 
   return (
     <Container className="flex flex-col pt-10 min-h-screen ">
       <PageFilmBasis data={data} trailer={trailer} actors={actors} />
-      <PartFilm />
+      { partId && <PartFilm partId={partId} id={id}/> }
       <GroupListFilms
         title={"Рекомендуемые к просмотру "}
         type={"movie"}

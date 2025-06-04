@@ -20,7 +20,7 @@ const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
     height: "350px",
   };
 
-  console.log(actors)
+  // console.log(data)
   
   return (
     <section className="">

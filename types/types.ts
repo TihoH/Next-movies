@@ -49,6 +49,16 @@ export interface ListFilmProps {
     data: any
 }
 
+export interface IPart {
+    id: number ,
+    title: string ,
+    release_date: string,
+    original_title: string,
+    overview:string ,
+    media_type: string
+    genre_ids: number[]
+    poster_path:string
+}
 export interface PageFilmDescriptionProps {
     data: {
         id: number
