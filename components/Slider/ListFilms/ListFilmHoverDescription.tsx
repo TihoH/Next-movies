@@ -8,7 +8,6 @@ import React, { FC } from "react";
 
 interface ListFilmHoverDescriptionProps {
   listItem: IlistItem;
-  // showPopupDetailsFilm: (listItem: IlistItem) => void;
   ganre: IAllGenres[];
   isHover?: boolean;
   isActiveDescription: boolean;
