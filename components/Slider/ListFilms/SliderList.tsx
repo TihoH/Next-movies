@@ -1,21 +1,15 @@
 "use client";
 import React, { FC, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import { Pagination } from "swiper/modules";
-import Link from "next/link";
 import NextButton from "./NextButton";
 import PrevBtn from "./PrevButton";
-import ListFilmHoverDescription from "./ListFilmHoverDescription";
-import Image from "next/image";
 import Skeleton from "@/components/Skeleton/Skeleton";
-import { useGetGanre } from "@/hooks/useGetGanre";
 import { IlistItem } from "@/types/types";
+import CardItem from "@/components/PageCategories/CardItem";
 
-const SliderList: FC<any> = ({ dataSlider, showPopupDetailsFilm }) => {
+const SliderList: FC<any> = ({ dataSlider, genres }) => {
   const swiperRef = useRef<any>(null);
-  const ganre = useGetGanre("movie");
-
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -42,28 +36,9 @@ const SliderList: FC<any> = ({ dataSlider, showPopupDetailsFilm }) => {
         {dataSlider?.map((listItem: IlistItem) => (
           <SwiperSlide
             key={listItem.id}
-            className="overflow-hidden transition-all cursor-pointer text-gray-300 rounded-md hover:border-white"
+            className="overflow-hidden group transition-all cursor-pointer text-gray-300 rounded-md hover:border-white"
           >
-            <Link className="group " href={`/pageFilm/${listItem.id}`}>
-              <div className="relative ">
-                <Image
-                  alt="poster image"
-                  className="duration-700 rounded-md border border-green-900 hover:opacity-50 group-hover:border-white"
-                  width={300}
-                  height={450}
-                  src={`https://image.tmdb.org/t/p/w342${listItem.poster_path}`}
-                />
-                <ListFilmHoverDescription
-                  listItem={listItem}
-                  showPopupDetailsFilm={showPopupDetailsFilm}
-                  ganre={ganre}
-                  isActiveDescription={true}
-                />
-              </div>
-              <h5 className="mt-1 group-hover:text-green-700">
-                {listItem.title}
-              </h5>
-            </Link>
+            <CardItem cardItem={listItem} genres={genres} />
           </SwiperSlide>
         ))}
       </Swiper>

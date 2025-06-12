@@ -1,4 +1,6 @@
+'use client'
 import BTNFavorites from "@/components/UI/BTNFavorites";
+import useFilmHoverDescription from "@/store/useFilmHoverDescription";
 import { IAllGenres, IlistItem } from "@/types/types";
 import { sortGenres } from "@/utils/sortGanre";
 import { Info } from "lucide-react";
@@ -6,7 +8,7 @@ import React, { FC } from "react";
 
 interface ListFilmHoverDescriptionProps {
   listItem: IlistItem;
-  showPopupDetailsFilm: (listItem: IlistItem) => void;
+  // showPopupDetailsFilm: (listItem: IlistItem) => void;
   ganre: IAllGenres[];
   isHover?: boolean;
   isActiveDescription: boolean;
@@ -14,18 +16,14 @@ interface ListFilmHoverDescriptionProps {
 
 const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
   listItem,
-  showPopupDetailsFilm,
+
   ganre,
   isHover,
   isActiveDescription,
 }) => {
-  // const ganre = useGetGanre("movie");
+    const isActivePopup = useFilmHoverDescription(store => store.isActivePopup)
+    const showPopupDetailsFilm = useFilmHoverDescription(store => store.showPopupDetailsFilm)
 
-  const activeShowPopupDetailsFilm = (listItem: IlistItem) => {
-    showPopupDetailsFilm(listItem);
-  };
-
-  // console.log(listItem);
   return (
     <div className="flex  flex-col justify-between  h-full w-full group-hover:translate-x-[220px] top-0 duration-700  transition absolute   rounded-md -left-[220px]  text-sm  bg-black  bg-opacity-60 px-2  ">
       <div className="flex flex-col gap-1 pt-2">
@@ -51,7 +49,7 @@ const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
             <Info
               strokeWidth={1.5}
               className="  text-yellow-500 hover:text-baseGreen "
-              onClick={() => activeShowPopupDetailsFilm(listItem)}
+              onClick={() => showPopupDetailsFilm(listItem) }
             />
             <span className="absolute px-5 py-2 opacity-0 right-8 -top-3 bg-gray-900/50  duration-300 group-hover/showDetails:opacity-100 text-white ">
               Подробнее

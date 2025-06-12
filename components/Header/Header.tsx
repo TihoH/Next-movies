@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const { ListSearchData, isLoading, totalResults } = useDebonceSearch( searchValue , activeSearch );
   const refHeader = useRef<HTMLDivElement>(null)
-  const inpRef = useRef(null)
+  const inpRef = useRef<HTMLDivElement>(null)
 
 
   return (

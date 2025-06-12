@@ -6,7 +6,6 @@ import { dropMenu, headerLinks } from "@/types/types";
 import { getGanre } from "@/API/getGanre";
 import { useGetFetchDataGanres } from "@/hooks/useGetFetchDataGanres";
 
-
 const ListLinks: React.FC = () => {
   const headerLinks: headerLinks[] = [
     {
@@ -21,14 +20,14 @@ const ListLinks: React.FC = () => {
     },
     { name: "Мультфильмы", id: 3, activeDropMenu: true },
   ];
-  const dropMenu:dropMenu[] = [
+  const dropMenu: dropMenu[] = [
     {
       id: 1,
-      hoverMenu: useGetFetchDataGanres('movie' , getGanre)
+      hoverMenu: useGetFetchDataGanres("movie", getGanre),
     },
     {
       id: 2,
-      hoverMenu: useGetFetchDataGanres('tv' , getGanre)
+      hoverMenu: useGetFetchDataGanres("tv", getGanre),
     },
   ];
   const [activeIdHover, setActiveIdHover] = useState<number>(0);
@@ -37,7 +36,12 @@ const ListLinks: React.FC = () => {
     <div onMouseLeave={() => setActiveIdHover(0)}>
       <ul className="flex relative gap-2 z-50 ">
         {headerLinks.map((link) => (
-          <li className={`hover:text-white transition ${link.id === activeIdHover ? 'text-white' : ''}`} key={link.id}>
+          <li
+            className={`hover:text-white transition ${
+              link.id === activeIdHover ? "text-white" : ""
+            }`}
+            key={link.id}
+          >
             <Link onMouseMove={() => setActiveIdHover(link.id)} href={"/"}>
               {link.name}
             </Link>
@@ -53,9 +57,21 @@ const ListLinks: React.FC = () => {
           {dropMenu.map(
             (item) =>
               item.id === activeIdHover && (
-                <div key={item.id} className="flex flex-col  flex-wrap max-h-[320px] items-start max-w-[500px]">
-                  {item.hoverMenu?.map((dropMenu , index) => (
-                    <Link className="hover:text-white   hover:translate-x-4 transition" href={"/"} key={index}> {dropMenu.name.charAt(0).toUpperCase() + dropMenu.name.slice(1)} </Link>
+                <div
+                  key={item.id}
+                  className="flex flex-col  flex-wrap max-h-[320px] items-start max-w-[500px]"
+                >
+                  {item.hoverMenu?.map((dropMenu, index) => (
+                    <Link
+                      className="hover:text-white   hover:translate-x-4 transition"
+                      href={`/pageCategories/${dropMenu.id}`}
+                      key={index}
+                      onClick={ () => setActiveIdHover(0) }
+                    >
+                      {" "}
+                      {dropMenu.name.charAt(0).toUpperCase() +
+                        dropMenu.name.slice(1)}{" "}
+                    </Link>
                   ))}
                 </div>
               )

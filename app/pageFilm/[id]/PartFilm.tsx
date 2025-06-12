@@ -19,7 +19,7 @@ const PartFilm: FC<PartFilmProps> = ({ partId, id }) => {
   return (
     <div className=" mt-10 ">
       <h2 className="text-3xl">Все части</h2>
-      <ul className="mt-3 relative shadow-equal max-h-[400px] rounded-md p-4 flex overflow-y-scroll scrollbar border ">
+      <ul className={` ${dataPart.length >=5  && 'overflow-y-scroll'} mt-3 relative shadow-equal max-h-[400px] rounded-md p-4 flex  scrollbar  `}>
         <Image
           src={`https://image.tmdb.org/t/p/w342${findImage?.poster_path}`}
           alt={"Image part"}

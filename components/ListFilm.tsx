@@ -1,3 +1,84 @@
+// "use client";
+// import { ListFilmProps } from "@/types/types";
+// import React, { useEffect, useState } from "react";
+// import SliderList from "./Slider/ListFilms/SliderList";
+// import Popup from "./Popups/Popup";
+// import MoreDetailsFilm from "./MoreDetailsFilm";
+// import { getFilmById } from "@/API/getFilmById";
+// import { getTrailer } from "@/API/getTrailer";
+// import useFilmHoverDescription from "@/store/FilmHoverDescription";
+
+
+// const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
+
+//   // const [isActivePopupMoreDetailsFilm, setIsActivePopupMoreDetailsFilm] = useState(false);
+//   const [idMoreDetailsFilm, setIdMoreDetailsFilm] = useState<string>('');
+//   const [dataDetailsFilm, setDataDetailsFilm] = useState({});
+//   const [dataVideoDetailsFilm, setDataVideoDetailsFim] = useState([]);
+//    const setIsActivePopup = useFilmHoverDescription( state => state.setIsActivePopup )
+//    const activePopup = useFilmHoverDescription( state => state.isActivePopup )
+//   const fetchedRef = React.useRef(false);
+
+//   const showPopupDetailsFilm = (item: { id: string }) => {
+//     setIdMoreDetailsFilm( item.id );
+//     setIsActivePopup(true);
+//   };
+
+//   async function getData() {
+//     try {
+//       const data = await getFilmById(idMoreDetailsFilm, "movie");
+//       setDataDetailsFilm(data);
+//       console.log(data)
+//       const dataVideo = await getTrailer(idMoreDetailsFilm, "movie");
+//       const trailer = dataVideo.results.find( (video) => video.type === "Trailer" );
+//       if (trailer) {
+//         setDataVideoDetailsFim(trailer.key);
+//       }
+//     } catch (error) {
+//       console.log('ошибка ')
+//     }
+//   }
+
+
+//   useEffect(() => {
+//     if (idMoreDetailsFilm) {
+//     getData();
+//   }
+//   }, [idMoreDetailsFilm]);
+
+//   return (
+//     <div className="relative w-full ">
+//       <SliderList
+//         dataSlider={data}
+//         showPopupDetailsFilm={showPopupDetailsFilm}
+//       />
+//       <Popup
+//         // isActivePopup={isActivePopupMoreDetailsFilm}
+//         // setIsActivePopup={setIsActivePopupMoreDetailsFilm}
+//         setDataDetailsFilm={setDataDetailsFilm}
+//         fetchedRef={fetchedRef}
+//       >
+//         <MoreDetailsFilm
+//           dataDetailsFilm={dataDetailsFilm}
+//           dataVideoDetailsFilm={dataVideoDetailsFilm}
+//         />
+//       </Popup>
+//     </div>
+//   );
+// };
+
+// export default ListFilm;
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 import { ListFilmProps } from "@/types/types";
 import React, { useEffect, useState } from "react";
@@ -8,7 +89,7 @@ import { getFilmById } from "@/API/getFilmById";
 import { getTrailer } from "@/API/getTrailer";
 
 
-const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
+const ListFilm: React.FC<ListFilmProps> = ({ data , genres}) => {
 
   const [isActivePopupMoreDetailsFilm, setIsActivePopupMoreDetailsFilm] = useState(false);
   const [idMoreDetailsFilm, setIdMoreDetailsFilm] = useState<string>('');
@@ -19,6 +100,8 @@ const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
     setIdMoreDetailsFilm( item.id );
     setIsActivePopupMoreDetailsFilm(true);
   };
+
+  
 
   async function getData() {
     try {
@@ -45,6 +128,7 @@ const ListFilm: React.FC<ListFilmProps> = ({ data }) => {
       <SliderList
         dataSlider={data}
         showPopupDetailsFilm={showPopupDetailsFilm}
+        genres={genres}
       />
       <Popup
         isActivePopup={isActivePopupMoreDetailsFilm}

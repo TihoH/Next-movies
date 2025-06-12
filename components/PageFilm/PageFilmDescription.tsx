@@ -17,13 +17,11 @@ const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
 
   const opts = {
     width: "100%",
-    height: "350px",
+    height: "400px",
   };
-
-  // console.log(data)
   
   return (
-    <section className="">
+    <div className="">
       <h1 className="text-3xl text-gray-200 text-center">" {data.title} "</h1>
 
       <div className="flex flex-col gap-3 mt-5 ">
@@ -82,7 +80,7 @@ const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
             ))}
           </ul>
         </div>
-        <div className="flex flex-col ">
+        <div className="">
           <span className="text-gray-400">Актеры: </span>
           <ul className="flex flex-wrap">
             {actors?.slice(0 ,  !visibleCount ? 5 : undefined ).map((actor, index , arr) => (
@@ -101,7 +99,7 @@ const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

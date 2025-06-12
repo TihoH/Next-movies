@@ -40,13 +40,15 @@ export interface GroupListFilmsProps {
     title: string,
     type: 'movie' | 'tv',
     movieListType: string
-    id?: string
+    id?: string ,
+    genres: IAllGenres[]
 }
 export interface ListFilmProps {
     // type: string,
     // movieListType: string
     // trailer: any
     data: any
+    genres: IAllGenres[]
 }
 
 export interface IPart {

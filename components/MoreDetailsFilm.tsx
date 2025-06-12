@@ -1,16 +1,14 @@
-import { getTrailer } from "@/API/getTrailer";
-import React, { FC, useEffect, useState } from "react";
-import YouTube from "react-youtube";
+import React, { FC } from "react";
 import BTNFavorites from "./UI/BTNFavorites";
 import { Loader } from "lucide-react";
+import Link from "next/link";
+import useFilmHoverDescription from "@/store/useFilmHoverDescription";
+import YouTube from "react-youtube";
 
-interface MoreDetailsFilmProps {
-  dataDetailsFilm: any
-  dataVideoDetailsFilm: any
-}
+const MoreDetailsFilm: FC = ({}) => {
+  const dataDetailsFilm = useFilmHoverDescription( (store) => store.dataDetailsFilm );
 
-const MoreDetailsFilm:FC<MoreDetailsFilmProps> = ({ dataDetailsFilm, dataVideoDetailsFilm }) => {
-  if (!dataDetailsFilm && dataVideoDetailsFilm) {
+  if (!dataDetailsFilm) {
     return <Loader />;
   }
 
@@ -31,12 +29,18 @@ const MoreDetailsFilm:FC<MoreDetailsFilmProps> = ({ dataDetailsFilm, dataVideoDe
         ) : (
           <div className="h-[400px] w-[300px] bg-gray-400"></div>
         )}
-        <div className="mt-2">
+        <div className="mt-2 ">
           <BTNFavorites
             isHover={false}
             text="Добавить в избранное"
             className={"mt-2"}
           />
+          <Link
+            href={`/pageFilm/${dataDetailsFilm.id}`}
+            className=" block text-center w-full border border-gray-700 py-2 rounded-md hover:bg-gray-900 transition"
+          >
+            Смотреть
+          </Link>
         </div>
       </div>
       <div>
