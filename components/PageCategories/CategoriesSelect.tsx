@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Pagination = () => {
+const CategoriesSelect = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Pagination = () => {
     );
 };
 
-export default Pagination;
+export default CategoriesSelect;

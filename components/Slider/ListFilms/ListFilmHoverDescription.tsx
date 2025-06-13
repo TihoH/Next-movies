@@ -1,6 +1,6 @@
 'use client'
 import BTNFavorites from "@/components/UI/BTNFavorites";
-import useFilmHoverDescription from "@/store/useFilmHoverDescription";
+import FilmHoverDescriptionStore from "@/store/FilmHoverDescriptionStore";
 import { IAllGenres, IlistItem } from "@/types/types";
 import { sortGenres } from "@/utils/sortGanre";
 import { Info } from "lucide-react";
@@ -15,13 +15,11 @@ interface ListFilmHoverDescriptionProps {
 
 const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
   listItem,
-
   ganre,
   isHover,
   isActiveDescription,
 }) => {
-    const isActivePopup = useFilmHoverDescription(store => store.isActivePopup)
-    const showPopupDetailsFilm = useFilmHoverDescription(store => store.showPopupDetailsFilm)
+    const showPopupDetailsFilm = FilmHoverDescriptionStore(store => store.showPopupDetailsFilm)
 
   return (
     <div className="flex  flex-col justify-between  h-full w-full group-hover:translate-x-[220px] top-0 duration-700  transition absolute   rounded-md -left-[220px]  text-sm  bg-black  bg-opacity-60 px-2  ">

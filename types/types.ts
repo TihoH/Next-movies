@@ -13,12 +13,26 @@ export interface DataSearch {
   results: IlistItem[];
 }
 
+// export interface IDataDetailsFilm {
+//     id: number ,
+//     title: string;
+//      poster_path: string ,
+//      tagline: string ,
+//      release_date: string
+//      runtime: number ,
+//      overview: string ,
+//      genre_ids: number[]
+// } 
+
 export interface IlistItem {
+     id: number ,
     title: string;
-    id: number
-    release_date: number;
-    genre_ids: number[],
-    poster_path: string
+     poster_path: string ,
+     tagline: string ,
+     release_date: string
+     runtime: number ,
+     overview: string ,
+     genre_ids: number[]
 }
 export interface hoverMenu  {
     name: string

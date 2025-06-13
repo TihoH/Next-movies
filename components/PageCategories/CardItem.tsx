@@ -4,14 +4,15 @@ import ListFilmHoverDescription from "../Slider/ListFilms/ListFilmHoverDescripti
 import Image from "next/image";
 import { IAllGenres, IlistItem } from "@/types/types";
 import Link from "next/link";
+import Skeleton from "../Skeleton/Skeleton";
+
 
 interface CardItemProps {
   cardItem: IlistItem
   genres: IAllGenres[]
 }
 
-const CardItem:FC<CardItemProps> = ({cardItem , genres})=> {
-
+const CardItem:FC<CardItemProps> = ({cardItem , genres })=> {
 
   return (
     <div className="overflow-hidden">

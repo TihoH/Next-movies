@@ -1,4 +1,4 @@
-import useFilmHoverDescription from "@/store/useFilmHoverDescription";
+import FilmHoverDescriptionStore from "@/store/FilmHoverDescriptionStore";
 import React, { FC } from "react";
 
 interface PopupProps {
@@ -8,8 +8,8 @@ interface PopupProps {
 const Popup: FC<PopupProps> = ({
   children,
 }) => {
-  const isActivePopup = useFilmHoverDescription(store => store.isActivePopup)
-  const setIsActivePopup = useFilmHoverDescription(store => store.setIsActivePopup)
+  const isActivePopup = FilmHoverDescriptionStore(store => store.isActivePopup)
+  const setIsActivePopup = FilmHoverDescriptionStore(store => store.setIsActivePopup)
   
   if (!isActivePopup) {
     return;
@@ -17,7 +17,6 @@ const Popup: FC<PopupProps> = ({
 
   const closePopup = () => {
     setIsActivePopup(false);
-    // setDataDetailsFilm("");
   };
 
   return (

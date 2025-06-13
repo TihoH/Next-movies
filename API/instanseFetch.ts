@@ -12,3 +12,15 @@ const options = {
     const data = await response.json()
     return data
 } 
+
+
+
+
+  // export async function instanseFetch(link:string){
+  //   const response = await fetch(`${link} ` , {
+  //     ...options ,
+  //     next: {revalidate: 1800},
+  //     cache: 'force-cache'
+  //   })
+  //   const data = await response.json()
+  //   return data

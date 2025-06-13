@@ -13,7 +13,6 @@ export function useDebonceSearch(searchValue:string , activeSearch:Boolean) {
       setListSearchData(dataSearch.results);
       setTotlaResults(dataSearch.total_results);
       setIsLoading(false);
-      console.log(dataSearch)
     } catch (error) {
       console.log("Ошибка поиска", error);
     }

@@ -2,15 +2,25 @@ import React, { FC } from "react";
 import BTNFavorites from "./UI/BTNFavorites";
 import { Loader } from "lucide-react";
 import Link from "next/link";
-import useFilmHoverDescription from "@/store/useFilmHoverDescription";
 import YouTube from "react-youtube";
+import {useGetVideoTrailer} from '@/hooks/useGetVideoTrailer'
+import FilmHoverDescriptionStore from "@/store/FilmHoverDescriptionStore";
+import { sortGenres } from "@/utils/sortGanre";
+import { useGetGanre } from "@/hooks/useGetGanre";
 
-const MoreDetailsFilm: FC = ({}) => {
-  const dataDetailsFilm = useFilmHoverDescription( (store) => store.dataDetailsFilm );
+const MoreDetailsFilm: FC = () => {
+  const dataDetailsFilm = FilmHoverDescriptionStore( (store) => store.dataDetailsFilm );
+  const idMoreDetailsViedeo = FilmHoverDescriptionStore( (store) => store.idMoreDetailsViedeo);
+  const ganres = useGetGanre('movie')
+  const trailerKey  = useGetVideoTrailer(idMoreDetailsViedeo , 'movie')
+
+  console.log('render')
 
   if (!dataDetailsFilm) {
     return <Loader />;
   }
+
+  console.log(dataDetailsFilm)
 
   const opts = {
     width: "70%",
@@ -72,11 +82,11 @@ const MoreDetailsFilm: FC = ({}) => {
         <div className="flex">
           <span className="text-gray-400">Жанр: </span>
           <ul className="flex gap-2 ml-1">
-            {dataDetailsFilm.genres?.map((g) => g.name).join(", ")}
+            {sortGenres(dataDetailsFilm.genre_ids , ganres )}
           </ul>
         </div>
         <div>
-          <YouTube videoId={dataVideoDetailsFilm} opts={opts} />
+          {trailerKey ? <YouTube videoId={trailerKey} opts={opts} /> : 'загрузка'}
         </div>
       </div>
     </div>

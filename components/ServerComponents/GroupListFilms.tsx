@@ -5,9 +5,6 @@ import React from 'react';
 
 const GroupListFilms:React.FC<GroupListFilmsProps> = async({genres, title , type , movieListType  , id}) => {
     const data = await getMovieListsByType( type, movieListType , id );
-
-
-
     return (
         <div className='group/newGroup  mt-2 w-full'>
             <h4 className='group-hover/newGroup:text-green-700 text-[25px] mt-5 py-5 text-gray-400'>
