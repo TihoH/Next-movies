@@ -36,7 +36,6 @@ const SearchList: FC<SearchListProps> = ({ ListSearchData , setActiveSearch}) =>
                 listItem={item}
                 ganre={ganre}
                 isHover={false}
-                showPopupDetailsFilm={showPopupDetailsFilm}
                 isActiveDescription={false}             />
             </div>
             <h5 className="mt-1 text-sm group-hover:text-green-700">
