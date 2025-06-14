@@ -1,7 +1,7 @@
 import { getTrailer } from "@/API/getTrailer";
 import { useEffect, useState } from "react";
 
-export function useGetVideoTrailer(idViedeo: number, typeMovTV = 'movie') {
+export function useGetVideoTrailer(idViedeo: string, typeMovTV = 'movie') {
 
     const [trailerKey, setTrailerKey] = useState<string>('')
     console.log('fafafa1')
