@@ -16,7 +16,7 @@ const CategoriesGroupList: FC<CategoriesGroupListProps> = ({ genres, id }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const categories = useGetCategories(id, "movie", currentPage);
 
-  const changeCurrentPage = (value:number) => {
+  const changeCurrentPage = (e:React.ChangeEvent , value:number) => {
     setCurrentPage(value);
   };
 

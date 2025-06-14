@@ -1,4 +1,4 @@
-// import { getCategories } from "@/API/getCategories";
+//Server Component
 import { getGanre } from "@/API/getGanre";
 import Container from "@/components/Container";
 import CategoriesGroupList from "@/components/PageCategories/CardGroupList";
@@ -12,19 +12,11 @@ interface pageCategoriesProps {
 
 const PageCategories = async ({ params }: pageCategoriesProps) => {
   const { id } = await params;
-  // const dataResponse = await getCategories(id, "movie" , 2);
   const { genres } = await getGanre("movie");
-
-  // console.log(dataResponse);
 
   return (
     <Container>
-      <CategoriesGroupList
-      id={id}
-        // dataList={dataResponse.results}
-        genres={genres}
-        // respone={dataResponse}
-      />
+      <CategoriesGroupList id={id} genres={genres} />
     </Container>
   );
 };
