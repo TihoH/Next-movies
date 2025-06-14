@@ -10,7 +10,7 @@ const GroupListFilms:React.FC<GroupListFilmsProps> = async({genres, title , type
             <h4 className='group-hover/newGroup:text-green-700 text-[25px] mt-5 py-5 text-gray-400'>
                 {title}
             </h4>
-            <ListFilm genres={genres} data={data.results}  />
+            <ListFilm genres={genres} data={data.results}  type={type}/>
         </div>
     );
 };

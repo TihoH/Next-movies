@@ -14,13 +14,9 @@ const MoreDetailsFilm: FC = () => {
   const ganres = useGetGanre('movie')
   const trailerKey  = useGetVideoTrailer(idMoreDetailsViedeo , 'movie')
 
-  console.log('render')
-
   if (!dataDetailsFilm) {
     return <Loader />;
   }
-
-  console.log(dataDetailsFilm)
 
   const opts = {
     width: "70%",

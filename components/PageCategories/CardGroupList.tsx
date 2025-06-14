@@ -10,11 +10,12 @@ import { useGetCategories } from "@/hooks/useGetCategories";
 interface CategoriesGroupListProps {
   genres: IAllGenres[];
   id: string;
+  type:string
 }
 
-const CategoriesGroupList: FC<CategoriesGroupListProps> = ({ genres, id }) => {
+const CategoriesGroupList: FC<CategoriesGroupListProps> = ({ genres, id , type }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const categories = useGetCategories(id, "movie", currentPage);
+  const categories = useGetCategories(id, type, currentPage);
 
   const changeCurrentPage = (e:React.ChangeEvent , value:number) => {
     setCurrentPage(value);

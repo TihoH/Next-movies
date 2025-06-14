@@ -7,16 +7,19 @@ import React from "react";
 interface pageCategoriesProps {
   params: Promise<{
     id: string;
+    type: string
   }>;
 }
 
 const PageCategories = async ({ params }: pageCategoriesProps) => {
-  const { id } = await params;
-  const { genres } = await getGanre("movie");
+  const { id , type } = await params;
+  const { genres } = await getGanre(type);
+
+  // console.log(type)
 
   return (
     <Container>
-      <CategoriesGroupList id={id} genres={genres} />
+      <CategoriesGroupList id={id} genres={genres} type={type} />
     </Container>
   );
 };

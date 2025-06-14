@@ -4,19 +4,21 @@ import ListFilmHoverDescription from "../Slider/ListFilms/ListFilmHoverDescripti
 import Image from "next/image";
 import { IAllGenres, IlistItem } from "@/types/types";
 import Link from "next/link";
-import Skeleton from "../Skeleton/Skeleton";
+
 
 
 interface CardItemProps {
   cardItem: IlistItem
   genres: IAllGenres[]
+  type: string
 }
 
-const CardItem:FC<CardItemProps> = ({cardItem , genres })=> {
+const CardItem:FC<CardItemProps> = ({cardItem , genres , type })=> {
+
 
   return (
     <div className="overflow-hidden">
-      <Link className="group " href={`/pageFilm/${cardItem.id}`}>
+      <Link className="group " href={`/pageFilm/${type}/${cardItem.id}`}>
         <div className="relative ">
           <Image
             alt="poster image"

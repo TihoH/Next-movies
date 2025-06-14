@@ -11,35 +11,35 @@ import { getGanre } from "@/API/getGanre";
 type PageProps = {
   params: Promise<{
     id: string;
+    type: string;
   }>;
 };
 
 export default async function PageFilm({ params }: PageProps) {
-  const { id } = await params;
-  const data = await getFilmById(id, "movie");
-  const trailer = await getTrailer(id, "movie");
-  const actors = await getActors("movie", id);
-  const partId = await data?.belongs_to_collection?.id
-  const genres = await getGanre("movie");
-
+  const { id, type } = await params;
+  const data = await getFilmById(id, type);
+  const trailer = await getTrailer(id, type);
+  const actors = await getActors(type, id);
+  const partId = await data?.belongs_to_collection?.id;
+  const genres = await getGanre(type);
 
   return (
     <Container className="flex flex-col pt-10 min-h-screen ">
       <PageFilmBasis data={data} trailer={trailer} actors={actors} />
-      { partId && <PartFilm partId={partId} id={id}/> }
+      {partId && <PartFilm partId={partId} id={id} type={type}/>}
       <GroupListFilms
         title={"Рекомендуемые к просмотру "}
-        type={"movie"}
+        type={type}
         movieListType={"recommendations"}
         id={id}
         genres={genres.genres}
       />
       <GroupListFilms
         title={"Похожие"}
-        type={"movie"}
+        type={type}
         movieListType={"similar"}
         id={id}
-          genres={genres.genres}
+        genres={genres.genres}
       />
     </Container>
   );

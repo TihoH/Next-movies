@@ -1,33 +1,42 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { dropMenu, headerLinks } from "@/types/types";
+import { dropMenu, IHeaderLinks } from "@/types/types";
 
 import { getGanre } from "@/API/getGanre";
 import { useGetFetchDataGanres } from "@/hooks/useGetFetchDataGanres";
+import { usePathname } from "next/navigation";
 
 const ListLinks: React.FC = () => {
-  const headerLinks: headerLinks[] = [
+  const movieGenres = useGetFetchDataGanres("movie", getGanre);
+  const tvGenres = useGetFetchDataGanres("tv", getGanre)
+  const pathnameType = usePathname().split("/")[2]
+
+  const headerLinks: IHeaderLinks[] = [
     {
       name: "Фильмы",
       id: 1,
       activeDropMenu: true,
+      type: "movie" 
     },
     {
       name: "Сериалы",
       id: 2,
       activeDropMenu: true,
+       type: "tv" 
     },
-    { name: "Мультфильмы", id: 3, activeDropMenu: true },
+    { name: "Мультфильмы", id: 3,  type: "cartoon" , activeDropMenu: true },
   ];
   const dropMenu: dropMenu[] = [
     {
       id: 1,
-      hoverMenu: useGetFetchDataGanres("movie", getGanre),
+      hoverMenu: movieGenres,
+      type: 'movie'
     },
     {
       id: 2,
-      hoverMenu: useGetFetchDataGanres("tv", getGanre),
+      hoverMenu: tvGenres,
+       type: 'tv'
     },
   ];
   const [activeIdHover, setActiveIdHover] = useState<number>(0);
@@ -36,13 +45,13 @@ const ListLinks: React.FC = () => {
     <div onMouseLeave={() => setActiveIdHover(0)}>
       <ul className="flex relative gap-2 z-50 ">
         {headerLinks.map((link) => (
-          <li
-            className={`hover:text-white transition ${
-              link.id === activeIdHover ? "text-white" : ""
-            }`}
-            key={link.id}
-          >
-            <Link onMouseMove={() => setActiveIdHover(link.id)} href={"/"}>
+        <li
+          key={link.id}
+          className={`hover:text-white transition ${
+            link.type === pathnameType ? "text-white font-bold" : ""
+          }`}
+        >
+            <Link onMouseEnter={() => setActiveIdHover(link.id)} href={`pageCategories/${link.type}`} >
               {link.name}
             </Link>
           </li>
@@ -50,7 +59,7 @@ const ListLinks: React.FC = () => {
       </ul>
       <ul
         className={`absolute bg-[#1F1B2D] top-1 -left-1 -right-1 pt-10 z-30  border-b-2  rounded-lg transition ${
-          activeIdHover != 0 ? "opacity-100" : "opacity-0"
+          activeIdHover != 0 ? "opacity-100" : "opacity-0 pointer-events-none"
         } `}
       >
         <div className="py-2  border-t border-gray-700 mt-5 px-2  max-h-[350px] ">
@@ -64,9 +73,9 @@ const ListLinks: React.FC = () => {
                   {item.hoverMenu?.map((dropMenu, index) => (
                     <Link
                       className="hover:text-white   hover:translate-x-4 transition"
-                      href={`/pageCategories/${dropMenu.id}`}
+                      href={`/pageCategories/${item.type}/${dropMenu.id}`}
                       key={index}
-                      onClick={ () => setActiveIdHover(0) }
+                      onClick={() => setActiveIdHover(0)}
                     >
                       {" "}
                       {dropMenu.name.charAt(0).toUpperCase() +

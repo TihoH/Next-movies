@@ -1,6 +1,7 @@
 export type dropMenu = {
     id: number ,
     hoverMenu: GanresType[]
+    type:string
 }
 
 export interface IAllGenres {
@@ -42,23 +43,24 @@ export interface GanresType {
     name: string
     id: number
 }
-export interface headerLinks {
+export interface IHeaderLinks {
     name: string,
     id: number,
-    activeDropMenu: boolean
+    activeDropMenu: boolean ,
+    type:string
 }
 
 
 // Start Props
 export interface GroupListFilmsProps {
     title: string,
-    type: 'movie' | 'tv',
+    type: string,
     movieListType: string
     id?: string ,
     genres: IAllGenres[]
 }
 export interface ListFilmProps {
-    // type: string,
+    type: string,
     // movieListType: string
     // trailer: any
     data: any

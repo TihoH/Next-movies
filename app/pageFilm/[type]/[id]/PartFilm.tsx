@@ -9,9 +9,10 @@ import React, { FC, useState } from "react";
 interface PartFilmProps {
   partId: number;
   id: string;
+  type:string
 }
 
-const PartFilm: FC<PartFilmProps> = ({ partId, id }) => {
+const PartFilm: FC<PartFilmProps> = ({ partId, id , type }) => {
   const dataPart: IPart[] = useGetPartCollactions(partId);
 
   const findImage = dataPart.find((item) => item.id === Number(id));
@@ -31,7 +32,7 @@ const PartFilm: FC<PartFilmProps> = ({ partId, id }) => {
           {dataPart
             .sort((a, b) => Number(b.release_date) - Number(a.release_date))
             .map((part, index) => (
-              <Link key={index} href={`/pageFilm/${part.id}`}>
+              <Link key={index} href={`/pageFilm/${type}/${part.id}`}>
                 <li
                   className={`${
                     Number(id) === part.id && "border-baseGreen   rounded-md "
