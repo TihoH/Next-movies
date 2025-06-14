@@ -16,7 +16,7 @@ const CategoriesGroupList: FC<CategoriesGroupListProps> = ({ genres, id }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const categories = useGetCategories(id, "movie", currentPage);
 
-  const changeCurrentPage = (e:React.ChangeEvent, value:number) => {
+  const changeCurrentPage = (value:number) => {
     setCurrentPage(value);
   };
 
@@ -25,7 +25,7 @@ const CategoriesGroupList: FC<CategoriesGroupListProps> = ({ genres, id }) => {
     <div>
       <CategoriesHeader />
       <CategoriesList
-        dataList={categories?.results}
+         dataList={categories?.results ?? null}
         genres={genres}
       />
       <div className="flex justify-center mt-10">
