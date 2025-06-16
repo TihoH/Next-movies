@@ -25,7 +25,7 @@ const ListFilmHoverDescription: FC<ListFilmHoverDescriptionProps> = ({
     <div className="flex  flex-col justify-between  h-full w-full group-hover:translate-x-[220px] top-0 duration-700  transition absolute   rounded-md -left-[220px]  text-sm  bg-black  bg-opacity-60 px-2  ">
       <div className="flex flex-col gap-1 pt-2">
         <p>
-          <span className="text-gray-400">Название:</span> {listItem.title}
+          <span className="text-gray-400">Название:</span> {listItem.title || listItem.name}
         </p>
         <p>
           {" "}

@@ -1,41 +1,31 @@
 export type dropMenu = {
-    id: number ,
+    id: number,
     hoverMenu: GanresType[]
-    type:string
+    type: string
 }
 
 export interface IAllGenres {
-    id: number ,
+    id: number,
     name: string
 }
 
 export interface DataSearch {
-  total_results: number;
-  results: IlistItem[];
+    total_results: number;
+    results: IlistItem[];
 }
-
-// export interface IDataDetailsFilm {
-//     id: number ,
-//     title: string;
-//      poster_path: string ,
-//      tagline: string ,
-//      release_date: string
-//      runtime: number ,
-//      overview: string ,
-//      genre_ids: number[]
-// } 
-
 export interface IlistItem {
-     id: number ,
+    id: number,
     title: string;
-     poster_path: string ,
-     tagline: string ,
-     release_date: string
-     runtime: number ,
-     overview: string ,
-     genre_ids: number[]
+    name: string
+    poster_path: string,
+    tagline: string,
+    release_date: string
+    first_air_date:string
+    runtime: number,
+    overview: string,
+    genre_ids: number[]
 }
-export interface hoverMenu  {
+export interface hoverMenu {
     name: string
 
 }
@@ -46,8 +36,8 @@ export interface GanresType {
 export interface IHeaderLinks {
     name: string,
     id: number,
-    activeDropMenu: boolean ,
-    type:string
+    activeDropMenu: boolean,
+    type: string
 }
 
 
@@ -56,7 +46,7 @@ export interface GroupListFilmsProps {
     title: string,
     type: string,
     movieListType: string
-    id?: string ,
+    id?: string,
     genres: IAllGenres[]
 }
 export interface ListFilmProps {
@@ -68,30 +58,38 @@ export interface ListFilmProps {
 }
 
 export interface IPart {
-    id: number ,
-    title: string ,
+    id: number,
+    title: string,
     release_date: string,
     original_title: string,
-    overview:string ,
+    overview: string,
     media_type: string
     genre_ids: number[]
-    poster_path:string
+    poster_path: string
 }
-export interface PageFilmDescriptionProps {
-    data: {
-        id: number
+
+export interface IDataTvFilm {
+  air_date: any;
+      id: number
         genres: any
         origin_country: any
         production_companies: any
         title: string,
+        name:string
         tagline: string,
         original_title: string,
         overview: string,
-        release_date: number
+        release_date: string
+        first_air_date:string
         runtime: number
-        poster_path:string
-    }
-      trailer: any,
-  actors: any,
+        poster_path: string
+        number_of_seasons:string
+        last_air_date:string
+        seasons: string
+}
+export interface PageFilmDescriptionProps {
+    data: IDataTvFilm
+    trailer: any,
+    actors: any,
 }
 // END Props

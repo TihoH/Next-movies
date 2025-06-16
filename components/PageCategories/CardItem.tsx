@@ -33,7 +33,7 @@ const CardItem:FC<CardItemProps> = ({cardItem , genres , type })=> {
             isActiveDescription={true}
           />
         </div>
-        <h5 className="mt-1 group-hover:text-green-700">{cardItem.title}</h5>
+        <h5 className="mt-1 group-hover:text-green-700">{cardItem.title || cardItem.name}</h5>
       </Link>
     </div>
   );

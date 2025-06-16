@@ -51,7 +51,7 @@ const ListLinks: React.FC = () => {
             link.type === pathnameType ? "text-white font-bold" : ""
           }`}
         >
-            <Link onMouseEnter={() => setActiveIdHover(link.id)} href={`pageCategories/${link.type}`} >
+            <Link onMouseEnter={() => setActiveIdHover(link.id)} href={`/pageCategories/${link.type}/all`} >
               {link.name}
             </Link>
           </li>

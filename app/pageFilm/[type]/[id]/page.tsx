@@ -23,10 +23,19 @@ export default async function PageFilm({ params }: PageProps) {
   const partId = await data?.belongs_to_collection?.id;
   const genres = await getGanre(type);
 
+  console.log(data);
+
   return (
     <Container className="flex flex-col pt-10 min-h-screen ">
       <PageFilmBasis data={data} trailer={trailer} actors={actors} />
-      {partId && <PartFilm partId={partId} id={id} type={type}/>}
+      {partId || data.seasons ? (
+        <PartFilm
+          partId={partId}
+          id={id}
+          type={type}
+          dataSeasons={data.seasons}
+        />
+      ) : null}
       <GroupListFilms
         title={"Рекомендуемые к просмотру "}
         type={type}

@@ -15,8 +15,6 @@ const PageCategories = async ({ params }: pageCategoriesProps) => {
   const { id , type } = await params;
   const { genres } = await getGanre(type);
 
-  // console.log(type)
-
   return (
     <Container>
       <CategoriesGroupList id={id} genres={genres} type={type} />

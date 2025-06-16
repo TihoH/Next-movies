@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 export function useGetVideoTrailer(idViedeo: string, typeMovTV = 'movie') {
 
     const [trailerKey, setTrailerKey] = useState<string>('')
-    console.log('fafafa1')
 
     async function getVideo() {
         try {

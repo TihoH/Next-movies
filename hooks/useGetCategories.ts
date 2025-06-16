@@ -1,6 +1,6 @@
 
 import { getCategories } from '@/API/getCategories';
-import { DataSearch, IlistItem } from '@/types/types';
+import { DataSearch } from '@/types/types';
 import { useEffect, useState } from "react"
 
 export function useGetCategories(id: string, type: string, page: number) {
