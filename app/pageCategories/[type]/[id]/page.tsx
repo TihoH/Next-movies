@@ -1,7 +1,8 @@
 //Server Component
 import { getGanre } from "@/API/getGanre";
 import Container from "@/components/Container";
-import CategoriesGroupList from "@/components/PageCategories/CardGroupList";
+import CategoriesGroupList from "@/components/PageCategories/CategoriesGroupList";
+import { sortGenres } from "@/utils/sortGanre";
 import React from "react";
 
 interface pageCategoriesProps {
@@ -14,6 +15,7 @@ interface pageCategoriesProps {
 const PageCategories = async ({ params }: pageCategoriesProps) => {
   const { id , type } = await params;
   const { genres } = await getGanre(type);
+  
 
   return (
     <Container>

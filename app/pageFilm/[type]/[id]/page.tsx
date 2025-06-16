@@ -4,8 +4,8 @@ import { getFilmById } from "@/API/getFilmById";
 import { getTrailer } from "@/API/getTrailer";
 import { getActors } from "@/API/getActors";
 import GroupListFilms from "@/components/ServerComponents/GroupListFilms";
-import PageFilmBasis from "./PageFilmBasis";
-import PartFilm from "./PartFilm";
+import PageFilmBasis from "../../../../components/PageFilm/PageFilmBasis";
+import PartFilm from "../../../../components/PageFilm/PartFilm";
 import { getGanre } from "@/API/getGanre";
 
 type PageProps = {
@@ -34,6 +34,7 @@ export default async function PageFilm({ params }: PageProps) {
           id={id}
           type={type}
           dataSeasons={data.seasons}
+          currentTv={data}
         />
       ) : null}
       <GroupListFilms

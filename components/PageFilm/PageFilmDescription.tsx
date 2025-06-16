@@ -57,7 +57,7 @@ const PageFilmDescription: React.FC<PageFilmDescriptionProps> = ({
         ) : (
           <div>
             <span className="text-gray-400">Сезонов: </span>
-            <span>{data?.seasons?.length}</span>
+            <span>{data?.seasons?.length - 1}</span>
           </div>
         )}
                 {data.number_of_seasons && (

@@ -1,12 +1,22 @@
 'use client'
 import BTNFavorites from "@/components/UI/BTNFavorites";
+import { IlistItem, IPart } from "@/types/types";
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
+interface PartListItemProps {
+  id: string
+  type:string
+  part: IPart
+  setHoverPartImg: (img: string | null) => void
+}
 
-const PartListItem = ({part  , id , type}) => {
+const PartListItem:FC <PartListItemProps> = ({part  , id , type , setHoverPartImg}) => {
+
   return (
     <Link href={`/pageFilm/${type}/${part.id}`}>
       <li
+        onMouseEnter={ () => setHoverPartImg(part.poster_path) }
+        onMouseLeave={ () => setHoverPartImg(null) }
         className={`${
           Number(id) === part.id && "border-baseGreen   rounded-md "
         } hover:bg-gray-800 group/groupTitlePartFilm  rounded-md hover:pl-6 flex justify-between transition-all pr-2 items-center py-1 gap-5 cursor-pointer border-b border-gray-500`}

@@ -14,16 +14,12 @@ interface SearchListProps {
 const SearchList: FC<SearchListProps> = ({ ListSearchData , setActiveSearch}) => {
       const ganre = useGetGanre("movie");
 
-  const showPopupDetailsFilm = () => {
-
-  }
-
   return (
     <ul className="z-40 relative grid grid-cols-6 gap-5 p-2 pb-[30px] ">
       {ListSearchData?.map((item , index) => (
         <li key={index} className="overflow-hidden  transition-all cursor-pointer text-gray-300 rounded-md hover:border-white">
           {" "}
-          <Link className="group " href={`/pageFilm/${item.id}`} onClick={ () => setActiveSearch(false) }>
+          <Link className="group " href={`/pageFilm/${'movie'}/${item.id}`} onClick={ () => setActiveSearch(false) }>
             <div className="relative">
               <Image
                 alt="poster image"

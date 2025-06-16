@@ -73,7 +73,7 @@ const ListLinks: React.FC = () => {
                   {item.hoverMenu?.map((dropMenu, index) => (
                     <Link
                       className="hover:text-white   hover:translate-x-4 transition"
-                      href={`/pageCategories/${item.type}/${dropMenu.id}`}
+                      href={`/pageCategories/${item.type}/${dropMenu.name}`}
                       key={index}
                       onClick={() => setActiveIdHover(0)}
                     >

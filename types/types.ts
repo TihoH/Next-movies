@@ -24,6 +24,7 @@ export interface IlistItem {
     runtime: number,
     overview: string,
     genre_ids: number[]
+    number_of_seasons:string
 }
 export interface hoverMenu {
     name: string
@@ -60,7 +61,9 @@ export interface ListFilmProps {
 export interface IPart {
     id: number,
     title: string,
+    name:string,
     release_date: string,
+    air_date: string
     original_title: string,
     overview: string,
     media_type: string
