@@ -1,7 +1,7 @@
 import { DataSearch } from './../types/types';
 import { instanseFetch } from './instanseFetch';
 
-export async function getCategories(id: string, type: string, page: number, year: number , sort:string): Promise<DataSearch> {
+export async function getCategories(id: string, type: string, page: number, year: number , sort:string | null): Promise<DataSearch> {
   const baseUrl = `https://api.themoviedb.org/3/discover/${type}`;
   const commonParams = `include_adult=false&include_video=false&language=ru&page=${page}&sort_by=vote_average.${sort}&primary_release_year=${year}`;
 

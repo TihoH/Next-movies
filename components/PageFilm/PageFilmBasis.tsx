@@ -8,11 +8,6 @@ import { PageFilmDescriptionProps } from "@/types/types";
 
 
 const PageFilmBasis:FC<PageFilmDescriptionProps> = ({data , trailer ,actors}) => {
-
-
-  const adedToFavorites = () => {
-    console.log(data)
-  }
   
   return (
     <div className="flex w-full">
@@ -29,7 +24,6 @@ const PageFilmBasis:FC<PageFilmDescriptionProps> = ({data , trailer ,actors}) =>
           text="Добавить в избранное"
           className="mt-3"
           isHover={false}
-          adedToFavorites={ adedToFavorites}
         />
       </div>
 

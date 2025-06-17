@@ -6,14 +6,12 @@ interface BTNFavoritesProps {
   text: string;
   isHover?: boolean;
   className?: string;
-  adedToFavorites: () => void
 }
 
-const BTNFavorites: FC<BTNFavoritesProps> = ({ isHover = true, text, className, adedToFavorites }) => {
+const BTNFavorites: FC<BTNFavoritesProps> = ({ isHover = true, text, className }) => {
   
   const addFavorites = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
-    adedToFavorites()
   };
   return (
     <div
