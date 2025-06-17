@@ -9,34 +9,35 @@ import { usePathname } from "next/navigation";
 
 const ListLinks: React.FC = () => {
   const movieGenres = useGetFetchDataGanres("movie", getGanre);
-  const tvGenres = useGetFetchDataGanres("tv", getGanre)
-  const pathnameType = usePathname().split("/")[2]
+  const tvGenres = useGetFetchDataGanres("tv", getGanre);
+  const pathnameType = usePathname().split("/")[2];
+
 
   const headerLinks: IHeaderLinks[] = [
     {
       name: "Фильмы",
       id: 1,
       activeDropMenu: true,
-      type: "movie" 
+      type: "movie",
     },
     {
       name: "Сериалы",
       id: 2,
       activeDropMenu: true,
-       type: "tv" 
+      type: "tv",
     },
-    { name: "Мультфильмы", id: 3,  type: "cartoon" , activeDropMenu: true },
+    { name: "Мультфильмы", id: 3, type: "cartoon", activeDropMenu: true , typeId: "мультфильм"},
   ];
   const dropMenu: dropMenu[] = [
     {
       id: 1,
       hoverMenu: movieGenres,
-      type: 'movie'
+      type: "movie",
     },
     {
       id: 2,
       hoverMenu: tvGenres,
-       type: 'tv'
+      type: "tv",
     },
   ];
   const [activeIdHover, setActiveIdHover] = useState<number>(0);
@@ -45,13 +46,16 @@ const ListLinks: React.FC = () => {
     <div onMouseLeave={() => setActiveIdHover(0)}>
       <ul className="flex relative gap-2 z-50 ">
         {headerLinks.map((link) => (
-        <li
-          key={link.id}
-          className={`hover:text-white transition ${
-            link.type === pathnameType ? "text-white font-bold" : ""
-          }`}
-        >
-            <Link onMouseEnter={() => setActiveIdHover(link.id)} href={`/pageCategories/${link.type}/all`} >
+          <li
+            key={link.id}
+            className={`hover:text-white transition ${
+              link.type === pathnameType ? "text-white font-bold" : ""
+            }`}
+          >
+            <Link
+              onMouseEnter={() => setActiveIdHover(link.id)}
+              href={`/pageCategories/${link.type}/${link.id != 3 ? 'all' : link.typeId}`}
+            >
               {link.name}
             </Link>
           </li>

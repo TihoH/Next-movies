@@ -1,3 +1,4 @@
+'use client'
 import React, { FC } from "react";
 import Image from "next/image";
 import BTNFavorites from "@/components/UI/BTNFavorites";
@@ -7,6 +8,12 @@ import { PageFilmDescriptionProps } from "@/types/types";
 
 
 const PageFilmBasis:FC<PageFilmDescriptionProps> = ({data , trailer ,actors}) => {
+
+
+  const adedToFavorites = () => {
+    console.log(data)
+  }
+  
   return (
     <div className="flex w-full">
       <div className="z-20 sticky top-10 self-start">
@@ -22,6 +29,7 @@ const PageFilmBasis:FC<PageFilmDescriptionProps> = ({data , trailer ,actors}) =>
           text="Добавить в избранное"
           className="mt-3"
           isHover={false}
+          adedToFavorites={ adedToFavorites}
         />
       </div>
 

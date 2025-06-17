@@ -22,8 +22,16 @@ const CategoriesGroupList: FC<CategoriesGroupListProps> = ({
   const currentId = sortParams(id, genres);
   const [currentPage, setCurrentPage] = useState(1);
   const [adedGanre, setAdedGanre] = useState<string>(currentId);
-  const categories = useGetCategories(adedGanre, type, currentPage);
+  const [selectedYear , setselectedYear] = useState<number | string | null>(null)
+   const [changeRating , setChangeRating] = useState<string | null>(null)
+  const categories = useGetCategories(adedGanre, type, currentPage , selectedYear , changeRating); // получаем категории
   const ganresSort = useGetGanre(type);
+  const years = Array.from({ length: 2025 - 1960 + 1 }, (_, i) => ({name: 1960 + i}));
+  const rating = [
+    {nameRating: 'рейтингу (низкий)' , value: 'asc'},
+    {nameRating: 'рейтингу (высокий)' , value: 'desc'},
+  ]
+
 
   const changeCurrentPage = (e: React.ChangeEvent, value: number) => {
     setCurrentPage(value);
@@ -41,7 +49,7 @@ const CategoriesGroupList: FC<CategoriesGroupListProps> = ({
     if (genres ) {
       sortParams(id, genres);
     }
-  }, [id, type]);
+  }, [id, type, currentPage , selectedYear , changeRating]);
 
   return (
     <div>
@@ -49,6 +57,11 @@ const CategoriesGroupList: FC<CategoriesGroupListProps> = ({
         setAdedGanre={setAdedGanre}
         ganresSort={ganresSort}
         currentIdName={id}
+        years={years}
+        setselectedYear={setselectedYear}
+        rating={rating}
+        setChangeRating={setChangeRating}
+      
       />
       <CategoriesList dataList={categories?.results ?? null} genres={genres} />
       <div className="flex justify-center mt-10">

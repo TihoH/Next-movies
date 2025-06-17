@@ -39,6 +39,7 @@ export interface IHeaderLinks {
     id: number,
     activeDropMenu: boolean,
     type: string
+    typeId?: string
 }
 
 

@@ -8,3 +8,6 @@ export  function sortGenres(ids:number[], allGenres:IAllGenres[]){
       .filter(Boolean)
       .join(", ")
   };
+
+
+  

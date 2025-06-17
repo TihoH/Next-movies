@@ -1,3 +1,4 @@
+// SERVER COMPONENT
 import Container from "@/components/Container";
 import React from "react";
 import { getFilmById } from "@/API/getFilmById";
@@ -23,7 +24,7 @@ export default async function PageFilm({ params }: PageProps) {
   const partId = await data?.belongs_to_collection?.id;
   const genres = await getGanre(type);
 
-  console.log(data);
+  console.log(data)
 
   return (
     <Container className="flex flex-col pt-10 min-h-screen ">
